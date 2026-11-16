@@ -1,0 +1,181 @@
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Сравнение нейросетей</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --page: #F4F6F9;
+      --surface: #FFFFFF;
+      --header: #17365A;
+      --text: #263445;
+      --accent: #245A92;
+      --line: #DCE4ED;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--text);
+      font: 1rem / 1.55 Inter, system-ui, sans-serif;
+    }
+
+    main {
+      max-width: 80rem;
+      margin-inline: auto;
+      padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 3rem);
+    }
+
+    h1 {
+      margin: 0 0 1.5rem;
+      color: var(--header);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 750;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    .scroll-hint {
+      display: none;
+      margin: 0 0 0.75rem;
+      color: var(--accent);
+      font-size: 0.9375rem;
+      font-weight: 600;
+    }
+
+    .table-region {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 0.8rem;
+      background: var(--surface);
+      box-shadow: 0 0.35rem 1.2rem rgb(23 54 90 / 7%);
+    }
+
+    .table-region:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 50rem;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    col:first-child { width: 16%; }
+    col:nth-child(2) { width: 28%; }
+    col:nth-child(3) { width: 28%; }
+    col:nth-child(4) { width: 28%; }
+
+    th,
+    td {
+      padding: 1.05rem clamp(0.9rem, 1.6vw, 1.35rem);
+      text-align: left;
+      vertical-align: top;
+      overflow-wrap: break-word;
+    }
+
+    thead th {
+      background: var(--header);
+      color: var(--surface);
+      font-weight: 650;
+    }
+
+    tbody th {
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    tbody tr + tr > * {
+      border-top: 1px solid var(--line);
+    }
+
+    code {
+      color: var(--accent);
+      font-family: ui-monospace, monospace;
+      font-size: 0.9em;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 54.48rem) {
+      .scroll-hint {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 id="page-title">Сравнение нейросетей</h1>
+    <p class="scroll-hint" id="scroll-hint">Прокрутите таблицу вправо</p>
+    <div class="table-region" role="region" aria-labelledby="page-title" aria-describedby="scroll-hint" tabindex="0">
+      <table aria-labelledby="page-title">
+        <colgroup>
+          <col>
+          <col>
+          <col>
+          <col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">Нейросеть</th>
+            <th scope="col">Сильные стороны</th>
+            <th scope="col">Слабые стороны</th>
+            <th scope="col">Форматы для загрузки</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><strong>ChatGPT</strong></th>
+            <td>Универсальный помощник. Может разобрать выгрузку из 1С, сгруппировать расходы, построить график и объяснить результат простыми словами.</td>
+            <td>Может ошибиться при извлечении точных сумм из сканов и PDF со сложной вёрсткой. Для расчётов надёжнее передать исходную таблицу.</td>
+            <td>Word (<code>DOCX</code>), PDF, <code>TXT</code>, Excel (<code>XLSX</code>, <code>XLS</code>), <code>CSV</code>, PowerPoint (<code>PPTX</code>), изображения. Расшифровка <code>MP3</code> и <code>WAV</code> доступна в отдельных режимах и тарифах.</td>
+          </tr>
+          <tr>
+            <th scope="row"><strong>Gemini</strong> — Google</th>
+            <td>Удобен для файлов на Google Диске, разбора аудио и видео. Может построить диаграмму по загруженной таблице.</td>
+            <td>При обработке больших файлов может пропустить детали. Для длинных аудио и видео действуют ограничения по тарифу.</td>
+            <td><code>DOCX</code>, PDF, <code>XLSX</code>, <code>CSV</code>, <code>PPTX</code>, изображения, аудио и видео. Можно добавлять файлы с Google Диска.</td>
+          </tr>
+          <tr>
+            <th scope="row"><strong>Claude</strong> — Anthropic</th>
+            <td>Удобен для чтения объёмных документов. Например, можно попросить разобрать договор по разделам или объяснить графики в отчёте.</td>
+            <td>В PDF длиннее 100 страниц обрабатывает только текст. Для загрузки Excel нужно включить функцию выполнения кода и создания файлов.</td>
+            <td>PDF, <code>DOCX</code>, <code>TXT</code>, <code>CSV</code>, <code>XLSX</code>, <code>HTML</code>, изображения (<code>JPG</code>, <code>PNG</code>, <code>GIF</code>, <code>WebP</code>).</td>
+          </tr>
+          <tr>
+            <th scope="row"><strong>DeepSeek</strong></th>
+            <td>Есть режим пошагового разбора сложного вопроса и поиск в интернете. Можно загрузить документ и задать вопросы по его содержанию.</td>
+            <td>При извлечении только текста графики и схемы могут потеряться. Для расчётов по Excel важно проверить, какие строки и листы сервис учёл.</td>
+            <td>PDF, Word, PowerPoint и изображения. <code>XLSX</code>, <code>XLS</code>, <code>CSV</code> и <code>TXT</code> отдельно подтверждены в документации для программного подключения.</td>
+          </tr>
+          <tr>
+            <th scope="row"><strong>Grok</strong></th>
+            <td>Удобен, если нужно быстро понять, что обсуждают в соцсети X и в интернете. Ищет свежие публикации, также умеет разбирать документы и видео.</td>
+            <td>Поддержка форматов различается между браузером и мобильным приложением. Длинные файлы может обработать по частям или сократить до выжимки.</td>
+            <td>PDF, <code>DOCX</code>, <code>XLSX</code>, <code>CSV</code>, <code>PPTX</code>, <code>JPG</code>, <code>PNG</code>, аудио (<code>MP3</code>, <code>WAV</code>), видео (<code>MP4</code>, <code>MOV</code>).</td>
+          </tr>
+          <tr>
+            <th scope="row"><strong>Microsoft Copilot</strong></th>
+            <td>Удобен, если вы работаете в Microsoft 365. Можно задавать вопросы по таблице прямо в Excel или работать с текстом внутри Word.</td>
+            <td>Для работы прямо в Excel нужны подходящая подписка и книга, сохранённая в OneDrive или SharePoint.</td>
+            <td>В чате: PDF, <code>DOCX</code>, <code>XLSX</code>, <code>PPTX</code>, <code>CSV</code>, <code>TXT</code>, <code>JPG</code>, <code>PNG</code>. Внутри Excel: <code>XLSX</code>, <code>XLSM</code>, <code>XLSB</code>.</td>
+          </tr>
+          <tr>
+            <th scope="row"><strong>Perplexity</strong></th>
+            <td>Удобен для поиска информации в интернете. Даёт ссылки рядом с выводами, поэтому можно быстро перейти к источнику и проверить ответ.</td>
+            <td>В длинном файле выделяет фрагменты, которые считает важными, и может пропустить нужную деталь. Из загруженного видео делает расшифровку речи, а визуальные сцены пока не индексирует.</td>
+            <td>PDF, текстовые файлы, <code>CSV</code>, изображения, аудио (<code>MP3</code>, <code>WAV</code>) и видео (<code>MP4</code>, <code>MOV</code>).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>
